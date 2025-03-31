@@ -1,0 +1,12 @@
+--instalando o madge e o graphviz
+npm -g install madge
+choco install graphviz (instalar com powershell)
+
+madge --image graph.png --extensions ts src
+
+madge --image graph.png --extensions ts --circular src
+
+madge --image graph.png --extensions ts --circular src/app.module.ts
+
+--VERIFICANDO APENAS AS DEPENDENCIAS
+madge src/pessoas/pessoas.controller.ts
