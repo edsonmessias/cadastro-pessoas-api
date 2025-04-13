@@ -1,0 +1,50 @@
+### cadastra um usuário
+POST http://localhost:3000/usuarios/cadastrar HTTP/1.1
+Content-Type: application/json
+
+{
+    "tipoUsuario": "pessoa juridica",
+    "nomeRazaoSocial": "Todos pela doação teste",
+    "cpfCnpj": "64325940000102",
+    "logradouro": "Algum Lugar do Brasil",
+    "numeroLogradouro": 666,
+    "complemento": "Empresa doadora",
+    "bairro": "Fim do Mundo",
+    "localidade": "São Paulo",
+    "uf": "SP",
+    "cep": "050123-321",
+    "email": "mbagp03@doacaogrupo.com",
+    "celular": "944225689",
+    "senha": "987654321abc",
+    "createdAt": "2025-04-13T22:03:36Z"
+}
+
+
+### Lista todos os usuários
+GET http://localhost:3000/usuarios/listar HTTP/1.1
+content-type: application/json
+
+
+### Lista apenas um usuário
+@usuarioId = 10
+GET http:localhost:3000/usuarios/listar/{{usuarioId}} HTTP/1.1
+content-type: application/json
+
+
+### Deleta um usuário
+@usuarioDeleteId = 4
+DELETE http:localhost:3000/usuarios/deletar/{{usuarioDeleteId}} HTTP/1.1
+Content-Type: application/json
+
+
+### Atualiza um usuário
+@usuarioUpdateId = 3
+PUT http:localhost:3000/usuarios/atualizar/{{usuarioUpdateId}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "cep": "06719-460",
+    "email": "felicidadedoar@email.com.br",
+    "celular": "11912345678",
+    "senha": "123456789edcedfg"
+}

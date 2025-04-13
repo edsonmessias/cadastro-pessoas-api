@@ -23,6 +23,7 @@ export class UsuariosService {
     email: string;
     celular: string;
     senha: string;
+    createdAt: Date;
   }): Promise<Usuario> {
     return this.prisma.usuario.create({
       data,

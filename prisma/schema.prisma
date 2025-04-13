@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Usuario {
-  id               Int      @id @default(autoincrement()) @map("usuario_id")
+  id               Int         @id @default(autoincrement()) @map("usuario_id")
   tipoUsuario      String
   nomeRazaoSocial  String
   cpfCnpj          String
@@ -25,9 +25,37 @@ model Usuario {
   localidade       String
   uf               String
   cep              String
-  email            String   @unique
+  email            String      @unique
   celular          String
   senha            String
-  createdAt        DateTime @db.DateTime()
-  updatedAt        DateTime @updatedAt @db.DateTime()
+  createdAt        DateTime    @db.DateTime
+  updatedAt        DateTime    @updatedAt @db.DateTime()
+  Doacao           Doacao[]
+  Transacao        Transacao[]
+}
+
+model Doacao {
+  id           Int      @id @default(autoincrement()) @map("doacao_id")
+  codigo       Int
+  descricao    String
+  status       String
+  doadorId     Int
+  doadorNome   Usuario  @relation(fields: [doadorId], references: [id], onUpdate: Cascade)
+  dataCadastro DateTime @db.DateTime()
+}
+
+model Transacao {
+  transacaoId           Int      @id @default(autoincrement()) @map("transacao_id")
+  beneficiarioId        Int
+  beneficiarioNome      Usuario  @relation(fields: [beneficiarioId], references: [id], onUpdate: Cascade)
+  tipoEnvio             String
+  dataTransacao         DateTime
+  logradouro            String
+  numeroLogradouro      Int
+  complementoLogradouro String
+  bairro                String
+  cidade                String
+  uf                    String
+  cep                   String
+  observacao            String
 }

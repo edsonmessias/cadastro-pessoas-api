@@ -1,8 +1,0 @@
-### Lista todos os usuários
-GET http:localhost:3000/usuarios/listar HTTP/1.1
-content-type: application/json
-
-### Lista apenas um usuário
-@usuarioId = 2
-GET http:localhost:3000/usuarios/listar/{{usuarioId}} HTTP/1.1
-content-type: application/json

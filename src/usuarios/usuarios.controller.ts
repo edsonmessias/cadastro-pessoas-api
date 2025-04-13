@@ -32,6 +32,7 @@ export class UsuariosController {
       email: string;
       celular: string;
       senha: string;
+      createdAt: Date;
     },
   ) {
     return this.usuariosService.create(createUsuarioDto);
