@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Usuario } from '@prisma/client';
 import { UpdateUsuarioDto } from './update-usuario.dto';
-import { format } from 'path';
 
 @Injectable()
 export class UsuariosService {
@@ -53,7 +52,9 @@ export class UsuariosService {
     id: number,
     dados: UpdateUsuarioDto,
   ): Promise<{ dados: UpdateUsuarioDto }> {
-    const usuario = await this.prisma.usuario.findUnique({ where: { id } });
+    const usuario = await this.prisma.usuario.findUnique({
+      where: { id },
+    });
 
     if (!usuario) {
       throw new NotFoundException(`Usuário com ID ${id} não encontrado.`);
