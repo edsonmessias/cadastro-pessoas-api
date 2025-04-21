@@ -49,6 +49,16 @@ export class DoacaoService {
   async listarDoacaoPorId(id: number) {
     const doacao = await this.prisma.doacao.findUnique({
       where: { id },
+      include: {
+        doadorNome: {
+          select: {
+            nomeRazaoSocial: true,
+            cpfCnpj: true,
+            email: true,
+            celular: true,
+          },
+        },
+      },
     });
 
     if (!doacao) {
